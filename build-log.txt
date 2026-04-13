@@ -1,0 +1,73 @@
+﻿
+> saass@0.1.0 build
+> next build
+
+â–² Next.js 16.2.1 (Turbopack)
+- Experiments (use with caution):
+  Â· optimizePackageImports
+
+  Creating an optimized production build ...
+âœ“ Compiled successfully in 10.4s
+  Running TypeScript ...
+  Finished TypeScript in 8.1s ...
+  Collecting page data using 3 workers ...
+  Generating static pages using 3 workers (0/7) ...
+npm : The width(-1) and height(-1) of chart should be greater than 0,
+At line:1 char:1
++ npm run build 2>&1 | Out-File build-log.txt -Encoding utf8; if ($LAST ...
++ ~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (The width(-1) a...greater than 0, 
+   :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+       please check the style of container, or the props width(100%) and 
+height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) 
+to control the
+       height and width.
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and 
+height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) 
+to control the
+       height and width.
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and 
+height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) 
+to control the
+       height and width.
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and 
+height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) 
+to control the
+       height and width.
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and 
+height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) 
+to control the
+       height and width.
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and 
+height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) 
+to control the
+       height and width.
+  Generating static pages using 3 workers (1/7) 
+  Generating static pages using 3 workers (3/7) 
+  Generating static pages using 3 workers (5/7) 
+âœ“ Generating static pages using 3 workers (7/7) in 1570ms
+  Finalizing page optimization ...
+
+Route (app)
+â”Œ â—‹ /
+â”œ â—‹ /_not-found
+â”œ â—‹ /dashboard
+â”œ â—‹ /dashboard/analytics
+â”” â—‹ /dashboard/settings
+
+
+â—‹  (Static)  prerendered as static content
+
