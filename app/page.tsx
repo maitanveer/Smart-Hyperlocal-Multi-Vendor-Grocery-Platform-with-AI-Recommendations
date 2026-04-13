@@ -15,23 +15,23 @@ import Link from 'next/link';
 
 const features = [
   {
-    icon: <BarChart3 className="h-8 w-8 text-blue-600 dark:text-blue-400" />,
+    icon: <BarChart3 className="h-8 w-8 text-blue-600" />,
     title: 'AI-Powered Recommendations',
     description:
       'Smart suggestions based on your shopping habits and preferences',
   },
   {
-    icon: <TrendingUp className="h-8 w-8 text-green-600 dark:text-green-400" />,
+    icon: <TrendingUp className="h-8 w-8 text-green-600" />,
     title: 'Hyperlocal Delivery',
     description: 'Fresh groceries from nearby stores delivered to your doorstep',
   },
   {
-    icon: <Shield className="h-8 w-8 text-purple-600 dark:text-purple-400" />,
+    icon: <Shield className="h-8 w-8 text-purple-600" />,
     title: 'Multi-Vendor Marketplace',
     description: 'Shop from multiple trusted local vendors in one place',
   },
   {
-    icon: <Zap className="h-8 w-8 text-yellow-600 dark:text-yellow-400" />,
+    icon: <Zap className="h-8 w-8 text-yellow-600" />,
     title: 'Real-Time Updates',
     description: 'Track your orders and get instant notifications',
   },
@@ -81,31 +81,31 @@ const pricingPlans = [
 
 export default function Home() {
   return (
-    <main className="min-h-screen overflow-hidden dark:bg-gradient-to-b dark:from-gray-950 dark:to-gray-900">
+    <main className="min-h-screen overflow-hidden">
       <Navbar />
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="absolute inset-0 -z-10">
-          <div className="absolute top-1/3 left-1/3 h-72 w-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 dark:opacity-10" />
-          <div className="absolute top-1/2 right-1/3 h-72 w-72 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 dark:opacity-10" />
-          <div className="absolute bottom-1/3 left-1/2 h-72 w-72 bg-pink-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 dark:opacity-10" />
+          <div className="absolute top-1/3 left-1/3 h-72 w-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20" />
+          <div className="absolute top-1/2 right-1/3 h-72 w-72 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20" />
+          <div className="absolute bottom-1/3 left-1/2 h-72 w-72 bg-pink-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20" />
         </div>
 
         <div className="mx-auto max-w-5xl text-center">
-          <div className="inline-block rounded-full bg-blue-50 dark:bg-blue-900/20 px-4 py-2 mb-6">
-            <p className="text-sm font-medium text-blue-600 dark:text-blue-400">
+          <div className="inline-block rounded-full bg-blue-50 px-4 py-2 mb-6">
+            <p className="text-sm font-medium text-blue-600">
               🚀 The next generation of analytics is here
             </p>
           </div>
 
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-gray-900 dark:text-white mb-6">
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-gray-900 mb-6">
             Fresh groceries, <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               smarter shopping
             </span>
           </h1>
 
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-10">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-10">
             Discover fresh local groceries with AI-powered recommendations.
             Shop from multiple vendors, get hyperlocal delivery, and enjoy personalized suggestions.
           </p>
@@ -131,42 +131,42 @@ export default function Home() {
 </div>
 
           {/* Hero Grocery Preview */}
-          <div className="rounded-[2rem] border border-gray-200 bg-white/90 shadow-2xl shadow-gray-200/50 dark:border-gray-700 dark:bg-slate-900/90 dark:shadow-black/30 overflow-hidden">
-            <div className="aspect-video p-6 sm:p-8 grid gap-6 bg-gradient-to-br from-slate-100 to-white dark:from-slate-950 dark:to-slate-900">
+          <div className="rounded-[2rem] border border-gray-200 bg-white/90 shadow-2xl shadow-gray-200/50 overflow-hidden">
+            <div className="aspect-video p-6 sm:p-8 grid gap-6 bg-gradient-to-br from-slate-100 to-white">
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <p className="text-xs uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">
+                  <p className="text-xs uppercase tracking-[0.22em] text-slate-500">
                     AI Recommendations
                   </p>
-                  <h3 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
+                  <h3 className="mt-3 text-2xl font-semibold text-slate-900">
                     Fresh produce basket
                   </h3>
                 </div>
-                <span className="inline-flex items-center rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-700 dark:bg-green-900/70 dark:text-green-200">
+                <span className="inline-flex items-center rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-700">
                   Organic
                 </span>
               </div>
 
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-                <div className="rounded-3xl bg-slate-100 p-4 dark:bg-slate-800/90">
-                  <p className="text-xs uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">
+                <div className="rounded-3xl bg-slate-100 p-4">
+                  <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
                     Bananas
                   </p>
-                  <p className="mt-3 text-2xl font-bold text-slate-900 dark:text-white">
+                  <p className="mt-3 text-2xl font-bold text-slate-900">
                     $2.99
                   </p>
-                  <p className="text-sm text-slate-500 dark:text-slate-400">
+                  <p className="text-sm text-slate-500">
                     Fresh Farms
                   </p>
                 </div>
-                <div className="rounded-3xl bg-slate-100 p-4 dark:bg-slate-800/90">
-                  <p className="text-xs uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">
+                <div className="rounded-3xl bg-slate-100 p-4">
+                  <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
                     Milk
                   </p>
-                  <p className="mt-3 text-2xl font-bold text-slate-900 dark:text-white">
+                  <p className="mt-3 text-2xl font-bold text-slate-900">
                     $3.49
                   </p>
-                  <p className="text-sm text-slate-500 dark:text-slate-400">
+                  <p className="text-sm text-slate-500">
                     Dairy Delight
                   </p>
                 </div>

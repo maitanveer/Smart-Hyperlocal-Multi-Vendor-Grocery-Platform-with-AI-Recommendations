@@ -10,13 +10,13 @@ export default function StoresPage() {
   const { vendors } = useProduct();
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 px-4 py-16">
+    <div className="min-h-screen bg-slate-50 px-4 py-16">
       <div className="mx-auto max-w-6xl">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">
+          <h1 className="text-4xl font-bold text-slate-900 mb-4">
             Nearby Stores
           </h1>
-          <p className="text-xl text-slate-600 dark:text-slate-400">
+          <p className="text-xl text-slate-600">
             Discover fresh groceries from trusted local vendors
           </p>
         </div>
@@ -30,7 +30,7 @@ export default function StoresPage() {
                     <CardTitle className="text-xl">{vendor.name}</CardTitle>
                     <div className="flex items-center gap-2 mt-2">
                       <MapPin className="h-4 w-4 text-slate-500" />
-                      <span className="text-sm text-slate-600 dark:text-slate-400">
+                      <span className="text-sm text-slate-600">
                         {vendor.location}
                       </span>
                     </div>
@@ -43,7 +43,7 @@ export default function StoresPage() {
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+                  <div className="flex items-center gap-2 text-sm text-slate-600">
                     <ShoppingBag className="h-4 w-4" />
                     <span>{vendor.products.length} products available</span>
                   </div>
@@ -52,13 +52,13 @@ export default function StoresPage() {
                     {vendor.products.slice(0, 3).map((product) => (
                       <span
                         key={product.id}
-                        className="inline-block bg-slate-100 dark:bg-slate-800 text-xs px-2 py-1 rounded-full"
+                        className="inline-block bg-slate-100 text-xs px-2 py-1 rounded-full"
                       >
                         {product.category}
                       </span>
                     ))}
                     {vendor.products.length > 3 && (
-                      <span className="inline-block bg-slate-100 dark:bg-slate-800 text-xs px-2 py-1 rounded-full">
+                      <span className="inline-block bg-slate-100 text-xs px-2 py-1 rounded-full">
                         +{vendor.products.length - 3} more
                       </span>
                     )}

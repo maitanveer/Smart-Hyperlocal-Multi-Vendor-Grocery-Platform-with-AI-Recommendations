@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/context/ThemeContext";
 import { AuthProvider } from "@/context/AuthContext";
 import { CartProvider } from "@/context/CartContext";
 import { ProductProvider } from "@/context/ProductContext";
@@ -33,15 +32,13 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
-        <ThemeProvider>
-          <AuthProvider>
-            <ProductProvider>
-              <CartProvider>
-                {children}
-              </CartProvider>
-            </ProductProvider>
-          </AuthProvider>
-        </ThemeProvider>
+        <AuthProvider>
+          <ProductProvider>
+            <CartProvider>
+              {children}
+            </CartProvider>
+          </ProductProvider>
+        </AuthProvider>
       </body>
     </html>
   );

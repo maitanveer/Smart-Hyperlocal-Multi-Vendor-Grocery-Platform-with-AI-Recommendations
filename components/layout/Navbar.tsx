@@ -3,13 +3,10 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/Button';
-import { useTheme } from '@/context/ThemeContext';
 import { useAuth } from '@/context/AuthContext';
-import { Sun, Moon } from 'lucide-react';
 
 export function NavbarContent() {
   const router = useRouter();
-  const { theme, toggleTheme } = useTheme();
   const { isAuthenticated, logout } = useAuth();
 
   const handleLogout = () => {
@@ -52,18 +49,6 @@ export function NavbarContent() {
           </div>
 
           <div className="flex items-center gap-3">
-            <button
-              onClick={toggleTheme}
-              className="rounded-lg p-2 hover:bg-gray-100 dark:hover:bg-gray-800"
-              aria-label="Toggle theme"
-            >
-              {theme === 'light' ? (
-                <Moon className="h-5 w-5 text-gray-600 dark:text-gray-400" />
-              ) : (
-                <Sun className="h-5 w-5 text-gray-400" />
-              )}
-            </button>
-
             <Link href={isAuthenticated ? '/dashboard' : '/login'}>
               <Button variant="primary" size="sm">
                 Dashboard
