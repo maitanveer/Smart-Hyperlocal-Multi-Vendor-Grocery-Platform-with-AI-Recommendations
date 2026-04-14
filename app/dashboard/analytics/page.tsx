@@ -57,11 +57,10 @@ export default function AdminAnalyticsPage() {
   // Top vendors by revenue
   const vendorRevenue = vendors.map(vendor => {
     const vendorOrders = orders.filter(order =>
-      order.items.some(item => item.vendorId === vendor.id)
+      order.vendorId === vendor.id
     );
     const revenue = vendorOrders.reduce((sum, order) => {
-      const vendorItems = order.items.filter(item => item.vendorId === vendor.id);
-      return sum + vendorItems.reduce((itemSum, item) => itemSum + (item.price * item.quantity), 0);
+      return sum + order.total;
     }, 0);
     return { name: vendor.name, revenue };
   }).sort((a, b) => b.revenue - a.revenue).slice(0, 5);
