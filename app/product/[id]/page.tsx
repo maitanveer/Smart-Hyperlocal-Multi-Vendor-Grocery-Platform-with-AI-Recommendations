@@ -37,7 +37,7 @@ export default function ProductPage() {
 
   const handleAddToCart = () => {
     addToCart({
-      id: `${product.id}-${Date.now()}`,
+      id: product.id,
       productId: product.id,
       name: product.name,
       price: product.price,
@@ -147,7 +147,7 @@ export default function ProductPage() {
                       size="sm"
                       onClick={() => {
                         addToCart({
-                          id: `${relatedProduct.id}-${Date.now()}`,
+                          id: relatedProduct.id,
                           productId: relatedProduct.id,
                           name: relatedProduct.name,
                           price: relatedProduct.price,

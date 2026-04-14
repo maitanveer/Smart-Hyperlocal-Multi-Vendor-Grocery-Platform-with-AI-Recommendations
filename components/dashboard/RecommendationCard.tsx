@@ -3,10 +3,8 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { ShoppingCart, Star, Zap } from 'lucide-react';
-import { Button } from '@/components/ui/Button';
 
 interface RecommendationCardProps {
-  id: string;
   name: string;
   price: number;
   vendor: string;
@@ -18,7 +16,6 @@ interface RecommendationCardProps {
 }
 
 export function RecommendationCard({
-  id,
   name,
   price,
   vendor,

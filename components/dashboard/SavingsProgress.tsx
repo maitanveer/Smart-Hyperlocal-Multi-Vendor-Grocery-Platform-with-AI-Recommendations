@@ -17,7 +17,7 @@ export function SavingsProgress({ saved, goal, period = 'this week' }: SavingsPr
       <div className="flex items-start justify-between mb-5">
         <div className="space-y-1">
           <p className="text-sm font-semibold text-emerald-700 dark:text-emerald-400 uppercase tracking-wide">
-            Weekly Savings
+            Savings {period}
           </p>
           <h3 className="text-3xl font-bold text-gray-900 dark:text-white">
             ${saved.toFixed(2)}

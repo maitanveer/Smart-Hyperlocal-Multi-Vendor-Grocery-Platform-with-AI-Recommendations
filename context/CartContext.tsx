@@ -49,11 +49,7 @@ function saveStoredCart(cart: CartItem[]) {
 }
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
-  const [cart, setCart] = useState<CartItem[]>([]);
-
-  useEffect(() => {
-    setCart(getStoredCart());
-  }, []);
+  const [cart, setCart] = useState<CartItem[]>(() => getStoredCart());
 
   useEffect(() => {
     saveStoredCart(cart);

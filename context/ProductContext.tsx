@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 export interface Product {
   id: string;
@@ -235,6 +235,7 @@ export function ProductProvider({ children }: { children: React.ReactNode }) {
   };
 
   const getRecommendations = (userId: string): Product[] => {
+    void userId;
     // Simple recommendation logic: return popular products
     return products
       .filter((product) => product.rating >= 4.0)

@@ -7,7 +7,7 @@ import { useProduct } from '@/context/ProductContext';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
 import { StatsCard } from '@/components/dashboard/StatsCard';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line, PieChart, Pie, Cell } from 'recharts';
-import { TrendingUp, Users, Store, Package, DollarSign } from 'lucide-react';
+import { TrendingUp, Store, Package, DollarSign } from 'lucide-react';
 
 export default function AdminAnalyticsPage() {
   const { user, isAuthenticated, loading } = useAuth();

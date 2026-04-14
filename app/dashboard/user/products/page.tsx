@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
-import { useProduct } from '@/context/ProductContext';
+import { useProduct, type Product } from '@/context/ProductContext';
 import { useCart } from '@/context/CartContext';
 import { ProductGrid } from '@/components/product/ProductGrid';
 import { AIRecommendations } from '@/components/dashboard/AIRecommendations';
@@ -34,7 +34,7 @@ export default function UserProductsPage() {
 
   const recommendedProducts = getRecommendations(user.email);
 
-  const handleAddToCart = (product: any) => {
+  const handleAddToCart = (product: Product) => {
     addToCart({
       id: product.id,
       productId: product.id,
@@ -42,7 +42,7 @@ export default function UserProductsPage() {
       price: product.price,
       image: product.image || '',
       vendorId: product.vendorId,
-      vendorName: product.vendor,
+      vendorName: product.vendorName,
     });
   };
 

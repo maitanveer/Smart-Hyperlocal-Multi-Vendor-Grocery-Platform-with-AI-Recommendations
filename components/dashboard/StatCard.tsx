@@ -47,7 +47,7 @@ export function StatCard({
             )}
           </div>
           <div className={`text-3xl rounded-lg p-2 bg-opacity-10 ${backgroundColor}`}>
-            {icon}
+            <div className={iconColor}>{icon}</div>
           </div>
         </div>
       </CardContent>

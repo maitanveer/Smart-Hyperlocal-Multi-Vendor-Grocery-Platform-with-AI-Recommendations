@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import { useProduct } from '@/context/ProductContext';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
+import { Card, CardContent } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -60,7 +60,7 @@ export default function VendorProductsPage() {
         <Card>
           <CardContent className="text-center py-12">
             <p className="text-slate-500 dark:text-slate-400 mb-4">
-              You haven't added any products yet.
+              You haven&apos;t added any products yet.
             </p>
             <Link href="/dashboard/vendor/add-product">
               <Button>Add Your First Product</Button>

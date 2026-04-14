@@ -38,21 +38,22 @@ export default function UserCartPage() {
   const handlePlaceOrder = () => {
     if (cart.length === 0) return;
 
-    // placeOrder(user.email, cart, finalTotal);
+    const primaryVendor = cart[0];
+
     placeOrder({
-  userId: user.email, // or user.id if available
-  userName: user.name || "User",
-  vendorId: cart[0]?.vendorId || "unknown",
-  vendorName: cart[0]?.vendorName || "unknown",
-  items: cart.map(item => ({
-    productId: item.id,
-    name: item.name,
-    price: item.price,
-    quantity: item.quantity
-  })),
-  total: finalTotal,
-  status: "pending"
-});
+      userId: user.email,
+      userName: user.name,
+      vendorId: primaryVendor.vendorId,
+      vendorName: primaryVendor.vendorName,
+      items: cart.map((item) => ({
+        productId: item.productId,
+        name: item.name,
+        price: item.price,
+        quantity: item.quantity,
+      })),
+      total: finalTotal,
+      status: 'pending',
+    });
     clearCart();
     router.push('/dashboard/user/orders');
   };

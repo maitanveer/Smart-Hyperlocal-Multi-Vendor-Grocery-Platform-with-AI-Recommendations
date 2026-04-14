@@ -27,16 +27,14 @@ export default function VendorOrdersPage() {
     return null;
   }
 
-  const vendorOrders = orders.filter(order =>
-    order.vendorId === user.email
+  const vendorOrders = orders.filter(
+    (order) => order.vendorId === user.email || order.vendorName === user.name
   );
 
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'pending': return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200';
       case 'confirmed': return 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200';
-      case 'preparing': return 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200';
-      case 'ready': return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200';
       case 'delivered': return 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200';
       default: return 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200';
     }
@@ -64,7 +62,8 @@ export default function VendorOrdersPage() {
       ) : (
         <div className="space-y-4">
           {vendorOrders.map((order) => {
-            const vendorTotal = order.items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const vendorItems = order.items;
+            const vendorTotal = vendorItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
             return (
               <Card key={order.id}>
@@ -87,9 +86,7 @@ export default function VendorOrdersPage() {
                       <h4 className="font-medium text-slate-900 dark:text-white mb-2">
                         Customer: {order.userName}
                       </h4>
-                      <p className="text-sm text-slate-600 dark:text-slate-400">
-                        Email: {order.userId}
-                      </p>
+                      <p className="text-sm text-slate-600 dark:text-slate-400">{order.userId}</p>
                     </div>
 
                     <div>
@@ -97,7 +94,7 @@ export default function VendorOrdersPage() {
                         Your Items:
                       </h4>
                       <div className="space-y-2">
-                        {order.items.map((item) => (
+                        {vendorItems.map((item) => (
                           <div key={item.productId} className="flex justify-between items-center text-sm">
                             <span>{item.name} × {item.quantity}</span>
                             <span className="font-medium">${(item.price * item.quantity).toFixed(2)}</span>

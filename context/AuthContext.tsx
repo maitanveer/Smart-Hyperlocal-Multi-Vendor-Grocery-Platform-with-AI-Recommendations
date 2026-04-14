@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 export type UserRole = 'user' | 'vendor' | 'admin';
 
@@ -61,20 +61,24 @@ function saveStoredUsers(users: SignupData[]) {
 }
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [user, setUser] = useState<UserInfo | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const storedSession = window.localStorage.getItem(SESSION_KEY);
-    if (storedSession) {
-      try {
-        setUser(JSON.parse(storedSession) as UserInfo);
-      } catch {
-        window.localStorage.removeItem(SESSION_KEY);
-      }
+  const [user, setUser] = useState<UserInfo | null>(() => {
+    if (typeof window === 'undefined') {
+      return null;
     }
-    setLoading(false);
-  }, []);
+
+    const storedSession = window.localStorage.getItem(SESSION_KEY);
+    if (!storedSession) {
+      return null;
+    }
+
+    try {
+      return JSON.parse(storedSession) as UserInfo;
+    } catch {
+      window.localStorage.removeItem(SESSION_KEY);
+      return null;
+    }
+  });
+  const loading = false;
 
   const login = ({ email, password, role }: AuthCredentials): AuthResult => {
     const users = getStoredUsers();

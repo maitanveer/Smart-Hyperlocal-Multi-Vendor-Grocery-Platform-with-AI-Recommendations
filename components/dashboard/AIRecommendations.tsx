@@ -1,7 +1,7 @@
 'use client';
 
 import { Sparkles, Brain, ArrowRight } from 'lucide-react';
-import { Card, CardContent, CardHeader } from '@/components/ui/Card';
+import { Card, CardContent } from '@/components/ui/Card';
 import { RecommendationCard } from './RecommendationCard';
 import { SavingsProgress } from './SavingsProgress';
 import type { Product } from '@/context/ProductContext';
@@ -24,7 +24,6 @@ export function AIRecommendations({
   }
 
   const recommendedProducts = products.slice(0, 6);
-  const avgSavings = Math.floor((savedAmount / goalAmount) * 100);
 
   return (
     <div className="space-y-6">
@@ -86,14 +85,14 @@ export function AIRecommendations({
           Recommended Products
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {recommendedProducts.map((product, idx) => (
+          {recommendedProducts.map((product) => (
             <RecommendationCard
               key={product.id}
-              id={product.id}
               name={product.name}
               price={product.price}
               vendor={product.vendorName}
-              rating={4.2 + Math.random() * 0.8}
+              image={product.image}
+              rating={product.rating}
               onAddToCart={() => onAddToCart(product)}
             />
           ))}
