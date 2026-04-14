@@ -19,7 +19,7 @@ export function NavbarContent() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-600">
               <span className="text-sm font-bold text-white">S</span>
             </div>
             <span className="text-xl font-bold text-gray-900 dark:text-white">
