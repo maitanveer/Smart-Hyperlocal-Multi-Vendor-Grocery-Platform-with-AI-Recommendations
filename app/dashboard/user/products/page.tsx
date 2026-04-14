@@ -4,7 +4,9 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import { useProduct } from '@/context/ProductContext';
+import { useCart } from '@/context/CartContext';
 import { ProductGrid } from '@/components/product/ProductGrid';
+import { AIRecommendations } from '@/components/dashboard/AIRecommendations';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import Link from 'next/link';
@@ -13,6 +15,7 @@ import { ShoppingBag, Heart } from 'lucide-react';
 export default function UserProductsPage() {
   const { user, isAuthenticated, loading } = useAuth();
   const { products, getRecommendations } = useProduct();
+  const { addToCart } = useCart();
   const router = useRouter();
 
   useEffect(() => {
@@ -31,14 +34,25 @@ export default function UserProductsPage() {
 
   const recommendedProducts = getRecommendations(user.email);
 
+  const handleAddToCart = (product: any) => {
+    addToCart({
+      productId: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image || '',
+      vendorId: product.vendorId,
+      vendorName: product.vendor,
+    });
+  };
+
   return (
     <div className="space-y-8">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-semibold text-slate-900 dark:text-white">
+          <h1 className="text-3xl font-semibold text-slate-900">
             Browse Products
           </h1>
-          <p className="text-slate-600 dark:text-slate-400 mt-2">
+          <p className="text-slate-600 mt-2">
             Discover fresh groceries from local vendors
           </p>
         </div>
@@ -59,24 +73,17 @@ export default function UserProductsPage() {
       </div>
 
       <div className="space-y-8">
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Heart className="h-5 w-5 text-red-500" />
-              Recommended for You
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            {recommendedProducts.length > 0 ? (
-              <ProductGrid products={recommendedProducts} />
-            ) : (
-              <p className="text-slate-500 dark:text-slate-400 text-center py-8">
-                Complete some orders to get personalized recommendations!
-              </p>
-            )}
-          </CardContent>
-        </Card>
+        {/* AI Recommendations Section */}
+        {recommendedProducts.length > 0 && (
+          <AIRecommendations
+            products={recommendedProducts}
+            onAddToCart={handleAddToCart}
+            savedAmount={24.5}
+            goalAmount={50}
+          />
+        )}
 
+        {/* All Products Section */}
         <Card>
           <CardHeader>
             <CardTitle>All Products</CardTitle>
