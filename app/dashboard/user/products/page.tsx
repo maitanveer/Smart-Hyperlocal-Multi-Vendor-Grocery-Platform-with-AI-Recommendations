@@ -36,6 +36,7 @@ export default function UserProductsPage() {
 
   const handleAddToCart = (product: any) => {
     addToCart({
+      id: product.id,
       productId: product.id,
       name: product.name,
       price: product.price,

@@ -28,7 +28,7 @@ export default function VendorOrdersPage() {
   }
 
   const vendorOrders = orders.filter(order =>
-    order.items.some(item => item.vendorId === user.email)
+    order.vendorId === user.email
   );
 
   const getStatusColor = (status: string) => {
@@ -64,8 +64,7 @@ export default function VendorOrdersPage() {
       ) : (
         <div className="space-y-4">
           {vendorOrders.map((order) => {
-            const vendorItems = order.items.filter(item => item.vendorId === user.email);
-            const vendorTotal = vendorItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const vendorTotal = order.items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
             return (
               <Card key={order.id}>
@@ -86,10 +85,10 @@ export default function VendorOrdersPage() {
                   <div className="space-y-4">
                     <div>
                       <h4 className="font-medium text-slate-900 dark:text-white mb-2">
-                        Customer: {order.customerName}
+                        Customer: {order.userName}
                       </h4>
                       <p className="text-sm text-slate-600 dark:text-slate-400">
-                        {order.deliveryAddress}
+                        Email: {order.userId}
                       </p>
                     </div>
 
@@ -98,8 +97,8 @@ export default function VendorOrdersPage() {
                         Your Items:
                       </h4>
                       <div className="space-y-2">
-                        {vendorItems.map((item) => (
-                          <div key={item.id} className="flex justify-between items-center text-sm">
+                        {order.items.map((item) => (
+                          <div key={item.productId} className="flex justify-between items-center text-sm">
                             <span>{item.name} × {item.quantity}</span>
                             <span className="font-medium">${(item.price * item.quantity).toFixed(2)}</span>
                           </div>

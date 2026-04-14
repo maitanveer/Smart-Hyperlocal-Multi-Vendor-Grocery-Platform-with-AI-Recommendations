@@ -92,10 +92,8 @@ export function AIRecommendations({
               id={product.id}
               name={product.name}
               price={product.price}
-              vendor={product.vendor}
+              vendor={product.vendorName}
               rating={4.2 + Math.random() * 0.8}
-              badge={product.discount ? `${product.discount}% OFF` : undefined}
-              savings={product.discount}
               onAddToCart={() => onAddToCart(product)}
             />
           ))}

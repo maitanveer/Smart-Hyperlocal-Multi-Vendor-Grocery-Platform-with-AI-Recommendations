@@ -2,11 +2,14 @@
 
 @layer base {
   * {
-    @apply m-0 p-0;
+    margin: 0;
+    padding: 0;
   }
 
   body {
-    @apply bg-white text-gray-900 transition-colors duration-300;
+    background-color: white;
+    color: rgb(17 24 39);
+    transition: color 300ms, background-color 300ms;
   }
 
   h1,
@@ -15,22 +18,40 @@
   h4,
   h5,
   h6 {
-    @apply font-semibold;
+    font-weight: 600;
   }
 
   html {
     color-scheme: light;
-    @apply scroll-smooth;
+    scroll-behavior: smooth;
   }
 }
 
 @layer components {
   .container-main {
-    @apply ml-64 mt-16 min-h-screen bg-gray-50 p-8;
+    margin-left: 16rem;
+    margin-top: 4rem;
+    min-height: 100vh;
+    background-color: rgb(249 250 251);
+    padding: 2rem;
   }
 
   .grid-auto {
-    @apply grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4;
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .grid-auto {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .grid-auto {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
   }
 }
 
