@@ -160,6 +160,7 @@ const mockOrders: Order[] = [
     userName: 'John Doe',
     vendorId: 'v1',
     vendorName: 'Fresh Farms',
+
     items: [
       { productId: '1', name: 'Organic Bananas', price: 2.99, quantity: 2 },
       { productId: '3', name: 'Bread Loaf', price: 2.49, quantity: 1 },

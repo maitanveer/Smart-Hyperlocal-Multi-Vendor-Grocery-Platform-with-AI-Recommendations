@@ -36,8 +36,8 @@ export default function AdminUsersPage() {
     { id: '4', email: 'alice@example.com', name: 'Alice Brown', role: 'user', isActive: true, joinedAt: '2024-01-25' },
   ];
 
-  const getUserStats = (userEmail: string) => {
-    const userOrders = orders.filter(order => order.customerEmail === userEmail);
+  const getUserStats = (userName: string) => {
+  const userOrders = orders.filter(order => order.userName === userName);
     const totalSpent = userOrders.reduce((sum, order) => sum + order.total, 0);
     return {
       orders: userOrders.length,
@@ -142,7 +142,7 @@ export default function AdminUsersPage() {
         <CardContent>
           <div className="space-y-4">
             {mockUsers.map((user) => {
-              const stats = getUserStats(user.email);
+              const stats = getUserStats(user.name);
               return (
                 <div key={user.id} className="flex items-center justify-between p-4 border border-slate-200 dark:border-slate-700 rounded-lg">
                   <div className="flex items-center gap-4">

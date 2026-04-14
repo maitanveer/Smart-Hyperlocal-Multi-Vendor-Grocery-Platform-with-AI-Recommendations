@@ -29,16 +29,21 @@ export default function UserOrdersPage() {
     return null;
   }
 
-  const userOrders = orders.filter(order => order.customerEmail === user.email);
+  // ✅ FIX: use userName instead of customerEmail
+  const userOrders = orders.filter(
+    (order) => order.userName === user?.name
+  );
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'pending': return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200';
-      case 'confirmed': return 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200';
-      case 'preparing': return 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200';
-      case 'ready': return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200';
-      case 'delivered': return 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200';
-      default: return 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200';
+      case 'pending':
+        return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200';
+      case 'confirmed':
+        return 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200';
+      case 'delivered':
+        return 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200';
+      default:
+        return 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200';
     }
   };
 
@@ -83,30 +88,43 @@ export default function UserOrdersPage() {
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <div>
-                    <CardTitle className="text-lg">Order #{order.id.slice(-8)}</CardTitle>
+                    <CardTitle className="text-lg">
+                      Order #{order.id.slice(-8)}
+                    </CardTitle>
                     <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
-                      {new Date(order.createdAt).toLocaleDateString()} {new Date(order.createdAt).toLocaleTimeString()}
+                      {new Date(order.createdAt).toLocaleDateString()}{' '}
+                      {new Date(order.createdAt).toLocaleTimeString()}
                     </p>
                   </div>
                   <Badge className={getStatusColor(order.status)}>
-                    {order.status.charAt(0).toUpperCase() + order.status.slice(1)}
+                    {order.status}
                   </Badge>
                 </div>
               </CardHeader>
+
               <CardContent>
                 <div className="space-y-4">
                   <div>
                     <h4 className="font-medium text-slate-900 dark:text-white mb-2">
                       Items:
                     </h4>
+
                     <div className="space-y-2">
                       {order.items.map((item) => (
-                        <div key={item.id} className="flex justify-between items-center text-sm">
-                          <span>{item.name} × {item.quantity}</span>
-                          <span className="font-medium">${(item.price * item.quantity).toFixed(2)}</span>
+                        <div
+                          key={item.productId} // ✅ FIXED
+                          className="flex justify-between items-center text-sm"
+                        >
+                          <span>
+                            {item.name} × {item.quantity}
+                          </span>
+                          <span className="font-medium">
+                            ${(item.price * item.quantity).toFixed(2)}
+                          </span>
                         </div>
                       ))}
                     </div>
+
                     <div className="border-t pt-2 mt-2">
                       <div className="flex justify-between font-medium">
                         <span>Total:</span>
@@ -115,14 +133,7 @@ export default function UserOrdersPage() {
                     </div>
                   </div>
 
-                  <div>
-                    <h4 className="font-medium text-slate-900 dark:text-white mb-2">
-                      Delivery Address:
-                    </h4>
-                    <p className="text-sm text-slate-600 dark:text-slate-400">
-                      {order.deliveryAddress}
-                    </p>
-                  </div>
+                  {/* ❌ Removed deliveryAddress (not in type) */}
 
                   <div className="flex gap-2">
                     <Button variant="secondary" size="sm">
