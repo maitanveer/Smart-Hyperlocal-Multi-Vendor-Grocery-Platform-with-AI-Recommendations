@@ -93,11 +93,11 @@ export default function Home() {
         </div>
 
         <div className="mx-auto max-w-5xl text-center">
-          <div className="inline-block rounded-full bg-blue-50 px-4 py-2 mb-6">
+          {/* <div className="inline-block rounded-full bg-blue-50 px-4 py-2 mb-6">
             <p className="text-sm font-medium text-blue-600">
               🚀 The next generation of analytics is here
             </p>
-          </div>
+          </div> */}
 
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-gray-900 mb-6">
             Fresh groceries, <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
