@@ -82,29 +82,25 @@ export default function AdminAnalyticsPage() {
           title="Total Revenue"
           value={`$${totalRevenue.toFixed(0)}`}
           icon={DollarSign}
-          trend="+12%"
-          trendUp={true}
+          trend={{ value: 12, direction: 'up' }}
         />
         <StatsCard
           title="Total Orders"
           value={totalOrders.toString()}
           icon={Package}
-          trend="+8%"
-          trendUp={true}
+          trend={{ value: 8, direction: 'up' }}
         />
         <StatsCard
           title="Active Vendors"
           value={totalVendors.toString()}
           icon={Store}
-          trend="+15%"
-          trendUp={true}
+          trend={{ value: 15, direction: 'up' }}
         />
         <StatsCard
           title="Total Products"
           value={totalProducts.toString()}
           icon={TrendingUp}
-          trend="+5%"
-          trendUp={true}
+          trend={{ value: 5, direction: 'up' }}
         />
       </div>
 
