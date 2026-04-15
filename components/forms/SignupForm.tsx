@@ -1,7 +1,7 @@
 'use client';
 
-import { type FormEvent, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { type FormEvent, useState, useEffect } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 import { Toast } from '@/components/ui/Toast';
@@ -9,6 +9,7 @@ import { useAuth, UserRole } from '@/context/AuthContext';
 
 export function SignupForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const { signup } = useAuth();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -17,6 +18,17 @@ export function SignupForm() {
   const [toastMessage, setToastMessage] = useState('');
   const [toastVariant, setToastVariant] = useState<'success' | 'error'>('success');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState<{ name: string; price: string } | null>(null);
+
+  useEffect(() => {
+    const plan = searchParams.get('plan');
+    const price = searchParams.get('price');
+
+    if (plan && price) {
+      const planName = plan === 'pro' ? 'Professional' : plan.charAt(0).toUpperCase() + plan.slice(1);
+      setSelectedPlan({ name: planName, price });
+    }
+  }, [searchParams]);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -48,6 +60,12 @@ export function SignupForm() {
         <p className="text-sm text-slate-500 dark:text-slate-400">
           Fill in your details to join the analytics platform.
         </p>
+
+        {selectedPlan && (
+          <div className="mt-4 inline-block rounded-full bg-indigo-100 px-4 py-2 text-sm font-medium text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200">
+            Selected Plan: {selectedPlan.name} (${selectedPlan.price}/month)
+          </div>
+        )}
       </div>
 
       {toastMessage && <Toast message={toastMessage} variant={toastVariant} />}

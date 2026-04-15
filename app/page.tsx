@@ -12,6 +12,7 @@ import {
   Check,
 } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const features = [
   {
@@ -80,6 +81,29 @@ const pricingPlans = [
 ];
 
 export default function Home() {
+  const router = useRouter();
+
+  const handleGetStarted = (plan: typeof pricingPlans[0]) => {
+    try {
+      const planSlug = plan.name.toLowerCase();
+      const price = plan.price;
+
+      // Different routing logic based on plan type
+      if (plan.name === 'Enterprise') {
+        // Enterprise goes to contact page
+        router.push(`/contact?plan=${planSlug}&price=${price}`);
+      } else {
+        // Starter and Professional go to signup
+        const planParam = plan.name === 'Professional' ? 'pro' : planSlug;
+        router.push(`/signup?plan=${planParam}&price=${price}`);
+      }
+    } catch (error) {
+      console.error('Navigation failed:', error);
+      // Fallback: show alert
+      alert(`Redirecting to signup for ${plan.name} plan. Please try again.`);
+    }
+  };
+
   return (
     <main className="min-h-screen overflow-hidden">
       <Navbar />
@@ -181,20 +205,6 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="rounded-[1.5rem] bg-slate-50 p-4">
-                <div className="flex items-center justify-between text-sm text-slate-500 mb-4">
-                  <span>Weekly savings</span>
-                  <span className="font-semibold text-slate-900">$24.50</span>
-                </div>
-                <div className="grid grid-cols-12 gap-2 h-24">
-                  <div className="col-span-2 rounded-full bg-green-600" />
-                  <div className="col-span-3 rounded-full bg-green-300" />
-                  <div className="col-span-2 rounded-full bg-slate-300" />
-                  <div className="col-span-3 rounded-full bg-slate-200" />
-                  <div className="col-span-2 rounded-full bg-slate-100" />
-                </div>
-              </div>
-
               <div className="flex items-center gap-3 text-sm text-slate-600">
                 <div className="rounded-2xl bg-blue-100 p-3">
                   <BarChart3 className="h-5 w-5 text-blue-600" />
@@ -281,6 +291,7 @@ export default function Home() {
                   </div>
 
                   <Button
+                    onClick={() => handleGetStarted(plan)}
                     variant={plan.popular ? 'primary' : 'secondary'}
                     className={`w-full mb-8 font-semibold ${
                       plan.popular
