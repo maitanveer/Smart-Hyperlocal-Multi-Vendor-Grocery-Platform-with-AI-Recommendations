@@ -1,7 +1,7 @@
 'use client';
 
 import { type FormEvent, useState, useEffect } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 import { Toast } from '@/components/ui/Toast';
@@ -9,7 +9,6 @@ import { useAuth, UserRole } from '@/context/AuthContext';
 
 export function SignupForm() {
   const router = useRouter();
-  const searchParams = useSearchParams();
   const { signup } = useAuth();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -21,14 +20,18 @@ export function SignupForm() {
   const [selectedPlan, setSelectedPlan] = useState<{ name: string; price: string } | null>(null);
 
   useEffect(() => {
-    const plan = searchParams.get('plan');
-    const price = searchParams.get('price');
+    // Use window.location.search to avoid useSearchParams prerendering issues
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search);
+      const plan = urlParams.get('plan');
+      const price = urlParams.get('price');
 
-    if (plan && price) {
-      const planName = plan === 'pro' ? 'Professional' : plan.charAt(0).toUpperCase() + plan.slice(1);
-      setSelectedPlan({ name: planName, price });
+      if (plan && price) {
+        const planName = plan === 'pro' ? 'Professional' : plan.charAt(0).toUpperCase() + plan.slice(1);
+        setSelectedPlan({ name: planName, price });
+      }
     }
-  }, [searchParams]);
+  }, []);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
